@@ -5,7 +5,7 @@ pipeline {
 
         stage('Get Source') {
             steps {
-                git url: 'https://github.com/eudespaz/jenkins_prod.git'
+                git url: 'https://github.com/eudespaz/jenkins_prod.git', branch: 'master'
             }
         }
     
@@ -21,7 +21,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
                     dockerapp.push('latest')
                     dockerapp.push("${env.BUILD_ID}")
 
