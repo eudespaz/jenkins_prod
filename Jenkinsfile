@@ -3,13 +3,13 @@ pipeline {
 
     stages {
 
-        stage ('Get Source') {
+        stage('Get Source') {
             steps {
                 git url: 'https://github.com/eudespaz/jenkins_prod.git', branch: 'master'
             }
         }
     
-        stage ('Docker Build') {
+        stage('Docker Build') {
             steps {
                 script {
                     dockerapp = docker.build("eudespaz/jenkins-prod:${env.BUILD_ID}",
@@ -17,7 +17,7 @@ pipeline {
                 }
             }
         
-        stage ('Docker Push Image') {
+        stage('Docker Push Image') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
