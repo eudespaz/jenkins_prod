@@ -5,7 +5,7 @@ pipeline {
 
         stage('Get Source') {
             steps {
-                git url: 'https://github.com/eudespaz/jenkins_prod.git', branch: 'master'
+                git url: 'https://github.com/eudespaz/jenkins_prod.git'
             }
         }
     
