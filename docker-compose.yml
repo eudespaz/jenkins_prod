@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   jenkins:
-    image: jenkins_teste:v1
+    image: jenkins-prod-kurier:v1
     deploy:
       placement:
         constraints:
@@ -10,9 +10,9 @@ services:
         condition: on-failure
       resources:
         limits:
-          memory: 3G
+          memory: 10G
     ports:
-      - 8088:8080
+      - 8089:8080
       - 50000:50000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -25,9 +25,9 @@ services:
 
 volumes:
   jenkins:
-    external: true
+    internal: true
 
 networks:
    KURIER:
-     external: true
+     internal: true 
 
