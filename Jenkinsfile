@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     dockerapp = docker.build("eudespaz/jenkins-producao-kurier:${env.BUILD_ID}",
-                    '-f C:/Users/eudes.paz/Desktop/jenkins_prod/Dockerfile .')
+                    '-f /var/jenkins_home/workspace/Projeto-JENKINS-PRODUCAO-KURIER/Dockerfile .')
                 }
             }
         }
