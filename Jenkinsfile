@@ -12,8 +12,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerapp = docker.build("eudespaz/jenkins-prod:${env.BUILD_ID}",
-                    '-f ./C:/Users/eudes.paz/jenkins_prod/Dockerfile/Dockerfile .')
+                    dockerapp = docker.build("eudespaz/jenkins-producao-kurier:${env.BUILD_ID}",
+                    '-f ./var/jenkins_home/workspace/Projeto JENKINS-PRODUCAO-KURIER/Dockerfile .')
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                     dockerapp.push('latest')
                     dockerapp.push("${env.BUILD_ID}")
 
